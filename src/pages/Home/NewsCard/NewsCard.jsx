@@ -1,11 +1,11 @@
-import { FaRegBookmark, FaRegShareFromSquare } from "react-icons/fa6";
+import { FaEye, FaRegBookmark, FaRegShareFromSquare } from "react-icons/fa6";
 import moment from 'moment/moment';
 import { Image } from 'react-bootstrap';
 import Card from 'react-bootstrap/Card';
 import { Link } from 'react-router-dom';
 
 const NewsCard = ( {news} ) => {
-    const { _id, title, details, image_url, author } = news;
+    const { _id, title, details, image_url, author, rating, total_view } = news;
     return (
         <div>
             <Card className="mb-4">
@@ -30,7 +30,14 @@ const NewsCard = ( {news} ) => {
                     }
                   </Card.Text>
                 </Card.Body>
-                <Card.Footer className="text-muted">2 days ago</Card.Footer>
+                <Card.Footer className="text-muted d-flex">
+                  <div className="flex-grow-1">
+                    <span>{rating.number}</span>
+                  </div>
+                  <div>
+                  <FaEye></FaEye> {total_view}
+                  </div>
+                </Card.Footer>
             </Card>
         </div>
     );
