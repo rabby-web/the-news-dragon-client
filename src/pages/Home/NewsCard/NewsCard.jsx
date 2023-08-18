@@ -1,8 +1,9 @@
-import { FaEye, FaRegBookmark, FaRegShareFromSquare } from "react-icons/fa6";
+import { FaEye, FaRegBookmark, FaRegShareFromSquare, FaRegStar, FaStar } from "react-icons/fa6";
 import moment from 'moment/moment';
 import { Image } from 'react-bootstrap';
 import Card from 'react-bootstrap/Card';
 import { Link } from 'react-router-dom';
+import Rating from "react-rating";
 
 const NewsCard = ( {news} ) => {
     const { _id, title, details, image_url, author, rating, total_view } = news;
@@ -32,7 +33,14 @@ const NewsCard = ( {news} ) => {
                 </Card.Body>
                 <Card.Footer className="text-muted d-flex">
                   <div className="flex-grow-1">
-                    <span>{rating.number}</span>
+                  <Rating
+                    placeholderRating={rating.number}
+                    readonly
+                    emptySymbol={<FaRegStar></FaRegStar>}
+                    placeholderSymbol={<FaStar></FaStar>}
+                    fullSymbol={<FaStar></FaStar>}
+                  />
+                    <span> {rating.number}</span>
                   </div>
                   <div>
                   <FaEye></FaEye> {total_view}
