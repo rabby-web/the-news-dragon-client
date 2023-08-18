@@ -1,6 +1,7 @@
 import { Button, Card } from "react-bootstrap";
 import { FaArrowLeft } from "react-icons/fa6";
 import { Link, useLoaderData } from "react-router-dom";
+import EditorsInsights from "../EditorsInsights/EditorsInsights";
 
 const News = () => {
     const news = useLoaderData();
@@ -18,6 +19,7 @@ const News = () => {
                     <Button variant="danger"><FaArrowLeft></FaArrowLeft>  All News in this Category</Button></Link>
                 </Card.Body>
             </Card>
+            <EditorsInsights></EditorsInsights>
         </div>
     );
 };
