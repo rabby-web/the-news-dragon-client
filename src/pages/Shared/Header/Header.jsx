@@ -1,14 +1,10 @@
-import { Button, Container, Nav, Navbar } from 'react-bootstrap';
+import { Button, Container } from 'react-bootstrap';
 import logo from '../../../assets/logo.png'
 import moment from 'moment';
 import Marquee from "react-fast-marquee";
-import { Link } from 'react-router-dom';
-import { useContext } from 'react';
-import { AuthContext } from '../../../provider/AuthProvider';
-import { FaUserCircle } from 'react-icons/fa';
 
 const Header = () => {
-    const {user} = useContext(AuthContext)
+    
     return (
         <div>
             <Container>
@@ -20,11 +16,11 @@ const Header = () => {
             <div className='d-flex bg-secondary p-2 rounded'>
                 <Button className='me-3' variant="danger">Latest</Button>
                 <Marquee className='text-light' speed={50}>
-                    Match Highlights: Germany vs Spain — as it happened   !   Match Highlights: Germany vs Spain as... Match Highlights: Germany vs Spain — as it happened   !   Match Highlights: Germany vs Spain as...
+                    Match Highlights: Germany vs Spain — as it happened ! Match Highlights: Germany vs Spain as... Match Highlights: Germany vs Spain — as it happened  ! Match Highlights: Germany vs Spain as...
                 </Marquee>
             </div>
             <div>
-            <Navbar collapseOnSelect expand="lg" className="bg-body-tertiary">
+            {/* <Navbar collapseOnSelect expand="lg" className="bg-body-tertiary">
                 <Container>
                   <Navbar.Brand href="#home"></Navbar.Brand>
                   <Navbar.Toggle aria-controls="responsive-navbar-nav" />
@@ -39,7 +35,6 @@ const Header = () => {
                     </Nav>
                     <Nav className='d-flex justify-content-center align-items-center'>
                       {user && <Nav.Link href="#deets">
-                        {/* {user.displayName} */}
                         <FaUserCircle className='fs-2'></FaUserCircle>
                       </Nav.Link>}
                       <Nav.Link eventKey={2} href="#memes">
@@ -53,7 +48,7 @@ const Header = () => {
                     </Nav>
                   </Navbar.Collapse>
                 </Container>
-            </Navbar>
+            </Navbar> */}
             </div>
             </Container>
         </div>
