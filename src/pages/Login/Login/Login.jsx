@@ -1,37 +1,68 @@
-
+import { useContext } from "react";
 import { Container, Button, Form } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../../provider/AuthProvider";
 
 const Login = () => {
-    return (
-        <Container className="w-25 mx-auto border border-secondary-subtle rounded-3">
-            <h3>Please Login</h3>
-            <Form>
-                <Form.Group className="mb-3" controlId="formBasicEmail">
-                  <Form.Label>Email address</Form.Label>
-                  <Form.Control type="email" name="email" placeholder="Enter email" required />
-                </Form.Group>
+  const { signIn } = useContext(AuthContext);
 
-                <Form.Group className="mb-3" name="password" controlId="formBasicPassword">
-                  <Form.Label>Password</Form.Label>
-                  <Form.Control type="password" placeholder="Password" required />
-                </Form.Group>
+  const handleLogin = (event) => {
+    event.preventDefault();
+    const form = event.target;
+    const email = form.email.value;
+    const password = form.password.value;
+    console.log(email, password);
+    signIn(email, password)
+      .then((result) => {
+        const loggedUser = result.user;
+        console.log(loggedUser);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+  return (
+    <Container className="w-25 mx-auto border border-secondary-subtle rounded-3">
+      <h3>Please Login</h3>
+      <Form onSubmit={handleLogin}>
+        <Form.Group className="mb-3" controlId="formBasicEmail">
+          <Form.Label>Email address</Form.Label>
+          <Form.Control
+            type="email"
+            name="email"
+            placeholder="Enter email"
+            required
+          />
+        </Form.Group>
 
-                <Button variant="primary" type="submit">
-                  Login
-                </Button>
-                    <br />
-                <Form.Text className="text-secondary">
-                    Do Not Have an Account? <Link to="/register">Register</Link>
-                  </Form.Text>
+        <Form.Group
+          className="mb-3"
+          type="password"
+          name="password"
+          controlId="formBasicPassword"
+        >
+          <Form.Label>Password</Form.Label>
+          <Form.Control
+            type="password"
+            name="password"
+            placeholder="Password"
+            required
+          />
+        </Form.Group>
 
-                <Form.Text className="text-success">
-                  </Form.Text>
-                <Form.Text className="text-danger">
-                  </Form.Text>
-            </Form>
-        </Container>
-    );
+        <Button variant="primary" type="submit">
+          Login
+        </Button>
+        <br />
+        <Form.Text className="text-secondary">
+          Do Not Have an Account? <Link to="/register">Register</Link>
+        </Form.Text>
+
+        <Form.Text className="text-success"></Form.Text>
+        <Form.Text className="text-danger"></Form.Text>
+      </Form>
+    </Container>
+  );
 };
 
 export default Login;
